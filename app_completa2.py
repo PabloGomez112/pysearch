@@ -9,6 +9,7 @@ import sys
 
 NUM_PERMUTACIONES = 128
 RESULTS_PER_PAGE = 10
+
 CSV_FILE = 'scanned_urls_202510192249.csv'
 
 forest = MinHashLSHForest(num_perm=NUM_PERMUTACIONES)

@@ -122,6 +122,41 @@ class HuffmanCompressor:
             print(f"Error en compresión: {e}")
             return None, None
 
+    def decompress_to_string(self, ruta_archivo_comprimido):
+            with open(ruta_archivo_comprimido, 'rb') as f:
+                header_len_bytes = f.read(4)
+                header_len = struct.unpack('I', header_len_bytes)[0]
+
+                header_json_bytes = f.read(header_len)
+                header_json = header_json_bytes.decode('utf-8')
+                codigos = json.loads(header_json)
+
+                codigos_inversos = {v: k for k, v in codigos.items()}
+
+                info_padding_byte = f.read(1)
+                padding = info_padding_byte[0]
+
+                datos_comprimidos = f.read()
+
+                bit_string = ""
+                for byte in datos_comprimidos:
+                    bit_string += f"{byte:08b}"
+
+                if padding > 0:
+                    bit_string = bit_string[:-padding]
+
+                texto_decodificado = ""
+                codigo_actual = ""
+                for bit in bit_string:
+                    codigo_actual += bit
+                    if codigo_actual in codigos_inversos:
+                        texto_decodificado += codigos_inversos[codigo_actual]
+                        codigo_actual = ""
+
+            return texto_decodificado
+
+
+
     def decompress(self, ruta_archivo_comprimido):
         ruta_salida = ruta_archivo_comprimido.replace(".ziphuff", "_descomprimido.txt")
         
