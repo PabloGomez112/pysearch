@@ -7,10 +7,18 @@ import webbrowser
 import math
 import sys
 
+import io
+
+from six import StringIO
+
+from huffman import HuffmanCompressor
+
 NUM_PERMUTACIONES = 128
 RESULTS_PER_PAGE = 10
 
-CSV_FILE = 'scanned_urls_202510192249.csv'
+COMPRESSED_FILENAME = "scanned_urls_202510192249.csv.ziphuff"
+CSV_FILE = StringIO(HuffmanCompressor.decompress_to_string(COMPRESSED_FILENAME))
+# CSV_FILE = 'scanned_urls_202510192249.csv'
 
 forest = MinHashLSHForest(num_perm=NUM_PERMUTACIONES)
 data_store = {}
