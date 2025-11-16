@@ -17,7 +17,16 @@ NUM_PERMUTACIONES = 128
 RESULTS_PER_PAGE = 10
 
 COMPRESSED_FILENAME = "scanned_urls_202510192249.csv.ziphuff"
-CSV_FILE = StringIO(HuffmanCompressor.decompress_to_string(COMPRESSED_FILENAME))
+
+# CORRECTO
+# 1. Crea una instancia de la clase
+compressor = HuffmanCompressor()
+
+# 2. Llama al método desde la instancia
+datos_descomprimidos = compressor.decompress_to_string(COMPRESSED_FILENAME)
+
+# 3. Usa los datos descomprimidos
+CSV_FILE = StringIO(datos_descomprimidos)
 # CSV_FILE = 'scanned_urls_202510192249.csv'
 
 forest = MinHashLSHForest(num_perm=NUM_PERMUTACIONES)
