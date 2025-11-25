@@ -7,8 +7,6 @@ import webbrowser
 import math
 import sys
 
-import io
-
 from six import StringIO
 
 from huffman import HuffmanCompressor
@@ -16,7 +14,7 @@ from huffman import HuffmanCompressor
 NUM_PERMUTACIONES = 128
 RESULTS_PER_PAGE = 10
 
-COMPRESSED_FILENAME = "scanned_urls_202510192249.csv.ziphuff"
+COMPRESSED_FILENAME = "urls_new.ziphuff"
 
 # CORRECTO
 # 1. Crea una instancia de la clase
@@ -203,6 +201,9 @@ def on_search_click():
 def open_link(url):
     print(f"Abriendo: {url}")
     webbrowser.open_new_tab(url)
+
+
+
 
 if __name__ == "__main__":
     
