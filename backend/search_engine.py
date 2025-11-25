@@ -10,11 +10,11 @@ RESULTS_PER_PAGE = 10
 
 COMPRESSED_FILENAME = "../urls_new.ziphuff"
 
-compressor = HuffmanCompressor()
+#compressor = HuffmanCompressor()
 
-datos_descomprimidos = compressor.decompress_to_string(COMPRESSED_FILENAME)
+#datos_descomprimidos = compressor.decompress_to_string(COMPRESSED_FILENAME)
 
-CSV_FILE = StringIO(datos_descomprimidos)
+CSV_FILE = '../scanned_urls_202510192249.csv'
 
 forest = MinHashLSHForest(num_perm=NUM_PERMUTACIONES)
 data_store = {}
