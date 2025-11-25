@@ -1,4 +1,3 @@
-import os
 import heapq
 import json
 import struct

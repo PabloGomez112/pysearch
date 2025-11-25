@@ -1,5 +1,4 @@
 from contextlib import asynccontextmanager
-
 from fastapi import FastAPI, Form
 from search_engine import build_index_on_startup
 from search_engine import run_real_search
